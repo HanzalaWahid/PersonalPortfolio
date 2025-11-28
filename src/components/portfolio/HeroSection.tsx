@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Download, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import profileImage from "@/assets/profile.jpg";
 
 export function HeroSection() {
   return (
@@ -36,15 +37,25 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          {/* Status badge */}
+          {/* Profile Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 border border-border/50 mb-8"
+            className="mb-8"
           >
-            <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-            <span className="text-sm text-muted-foreground">Available for opportunities</span>
+            <div className="relative inline-block">
+              <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-primary/30 shadow-glow">
+                <img 
+                  src={profileImage} 
+                  alt="Muhammad Hanzala Wahid" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-2 -right-2 px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-medium">
+                Available
+              </div>
+            </div>
           </motion.div>
 
           {/* Name */}
@@ -105,7 +116,7 @@ export function HeroSection() {
               </a>
             </Button>
             <Button variant="heroOutline" size="lg" asChild>
-              <a href="https://bit.ly/3L0s2Z0" target="_blank" rel="noopener noreferrer">
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
                 <Download className="mr-2" size={18} />
                 View Resume
               </a>
