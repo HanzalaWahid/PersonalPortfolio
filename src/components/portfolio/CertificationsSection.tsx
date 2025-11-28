@@ -16,14 +16,14 @@ const certifications = [
     title: "Data Visualization in Excel",
     issuer: "Coursera",
     description: "Professional certification in creating impactful data visualizations using Excel.",
-    link: "#",
+    link: "https://www.coursera.org/account/accomplishments/verify/U5Q7RFMF8ZTW",
     color: "accent"
   },
   {
     title: "Soft Skills Assessment",
     issuer: "IBM",
     description: "Assessment certification validating professional soft skills and workplace competencies.",
-    link: "#",
+    link: "https://www.coursera.org/account/accomplishments/verify/RJLSH7TS84EP",
     color: "primary"
   }
 ];
@@ -89,14 +89,12 @@ export function CertificationsSection() {
                     {cert.description}
                   </p>
 
-                  {cert.link !== "#" && (
-                    <Button variant="glass" size="sm" asChild className="w-full">
-                      <a href={cert.link} target="_blank" rel="noopener noreferrer">
-                        View Certificate
-                        <ExternalLink size={14} className="ml-2" />
-                      </a>
-                    </Button>
-                  )}
+                  <Button variant="glass" size="sm" asChild className="w-full">
+                    <a href={cert.link} target="_blank" rel="noopener noreferrer">
+                      View Certificate
+                      <ExternalLink size={14} className="ml-2" />
+                    </a>
+                  </Button>
                 </div>
               </div>
             </motion.div>

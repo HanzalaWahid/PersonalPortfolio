@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Mail, Phone, MapPin, Send, Github, Linkedin } from "lucide-react";
+import { Mail, Phone, Send, Github, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -19,12 +19,6 @@ const contactInfo = [
     label: "Phone",
     value: "03342092504",
     href: "tel:03342092504"
-  },
-  {
-    icon: MapPin,
-    label: "Location",
-    value: "Korangi 5, Karachi, Pakistan",
-    href: null
   }
 ];
 
