@@ -1,7 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
-import { Resend } from "npm:resend@2.0.0";
 
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -37,39 +36,63 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    // Send notification email to you
-    const notificationResponse = await resend.emails.send({
-      from: "Portfolio Contact <onboarding@resend.dev>",
-      to: ["wahidhanzala123@gmail.com"],
-      subject: `New Contact Form Submission from ${name}`,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, "<br>")}</p>
-      `,
+    // Send notification email to you using Resend REST API
+    const notificationResponse = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+      },
+      body: JSON.stringify({
+        from: "Portfolio Contact <onboarding@resend.dev>",
+        to: ["wahidhanzala123@gmail.com"],
+        subject: `New Contact Form Submission from ${name}`,
+        html: `
+          <h2>New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message.replace(/\n/g, "<br>")}</p>
+        `,
+      }),
     });
 
-    console.log("Notification email sent:", notificationResponse);
+    if (!notificationResponse.ok) {
+      const errorData = await notificationResponse.json();
+      console.error("Failed to send notification email:", errorData);
+      throw new Error(errorData.message || "Failed to send notification email");
+    }
+
+    console.log("Notification email sent successfully");
 
     // Send confirmation email to the sender
-    const confirmationResponse = await resend.emails.send({
-      from: "Muhammad Hanzala Wahid <onboarding@resend.dev>",
-      to: [email],
-      subject: "Thank you for reaching out!",
-      html: `
-        <h2>Thank you for contacting me, ${name}!</h2>
-        <p>I have received your message and will get back to you as soon as possible.</p>
-        <p>Here's a copy of your message:</p>
-        <blockquote style="border-left: 3px solid #00A8E8; padding-left: 15px; color: #555;">
-          ${message.replace(/\n/g, "<br>")}
-        </blockquote>
-        <p>Best regards,<br>Muhammad Hanzala Wahid</p>
-      `,
+    const confirmationResponse = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+      },
+      body: JSON.stringify({
+        from: "Muhammad Hanzala Wahid <onboarding@resend.dev>",
+        to: [email],
+        subject: "Thank you for reaching out!",
+        html: `
+          <h2>Thank you for contacting me, ${name}!</h2>
+          <p>I have received your message and will get back to you as soon as possible.</p>
+          <p>Here's a copy of your message:</p>
+          <blockquote style="border-left: 3px solid #00A8E8; padding-left: 15px; color: #555;">
+            ${message.replace(/\n/g, "<br>")}
+          </blockquote>
+          <p>Best regards,<br>Muhammad Hanzala Wahid</p>
+        `,
+      }),
     });
 
-    console.log("Confirmation email sent:", confirmationResponse);
+    if (!confirmationResponse.ok) {
+      console.error("Failed to send confirmation email");
+    } else {
+      console.log("Confirmation email sent successfully");
+    }
 
     return new Response(
       JSON.stringify({ success: true, message: "Emails sent successfully" }),
