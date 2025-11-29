@@ -52,9 +52,6 @@ export function HeroSection() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-2 -right-2 px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-medium">
-                Available
-              </div>
             </div>
           </motion.div>
 
