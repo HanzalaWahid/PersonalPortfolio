@@ -6,67 +6,43 @@ import { Building2, Users, Bug, GraduationCap, Code } from "lucide-react";
 const experiences = [
   {
     icon: Building2,
-    title: "Project Manager",
+    title: "Project Manager & Founder",
     company: "Rasinnovatech",
     period: "Present",
     color: "primary",
     highlights: [
       "Leading cross-functional teams and sprint planning",
-      "Client coordination and requirement gathering",
+      "Coordinating with clients and gathering requirements",
       "Managing product development end-to-end",
       "Ensuring timely delivery of quality products"
     ]
   },
   {
     icon: Bug,
-    title: "QA Analyst",
-    company: "TechForge",
-    period: "Present",
-    color: "accent",
-    highlights: [
-      "Validating software releases for production",
-      "Comprehensive bug reporting and tracking",
-      "Product quality assurance and checks",
-      "Collaborating with development teams"
-    ]
-  },
-  {
-    icon: Users,
-    title: "QA Automation Intern",
+    title: "QA Automation Engineering Intern",
     company: "Coventech",
     period: "Completed",
-    color: "primary",
+    color: "accent",
     highlights: [
-      "Led full product DeftGPT (Chinese company-based)",
-      "Weekly standups with PM, CTO, and developers",
+      "Worked on DeftGPT (Chinese company–based project)",
+      "Collaborated with PM, CTO, Team Lead & developers in weekly standups",
       "Built automation framework from scratch",
-      "API testing using API Fox, UI/UX review meetings"
+      "API testing using API Fox, UI/UX review meetings",
+      "Created bug tickets, verified releases, manual testing"
     ]
   },
   {
     icon: GraduationCap,
     title: "Instructor",
     company: "Private",
-    period: "Ongoing",
-    color: "accent",
-    highlights: [
-      "Teaching Python programming fundamentals",
-      "Mathematics instruction (Primary to O Levels)",
-      "Computer Science curriculum delivery",
-      "Mentoring students for academic excellence"
-    ]
-  },
-  {
-    icon: Code,
-    title: "Python Developer",
-    company: "Freelance",
-    period: "Ongoing",
+    period: "Ended Aug 2025",
     color: "primary",
     highlights: [
-      "Building AI-powered tools and applications",
-      "Backend development with Django & Flask",
-      "API development and integration",
-      "Full-stack project understanding"
+      "Taught Python programming fundamentals",
+      "Delivered C language instruction",
+      "Mathematics teaching (Primary to O Levels)",
+      "Computer Science curriculum delivery",
+      "Mentored students for academic excellence"
     ]
   }
 ];
