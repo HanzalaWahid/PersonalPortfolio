@@ -6,27 +6,17 @@ const skillCategories = [
   {
     name: "Programming",
     color: "primary",
-    skills: ["Python", "R", "JavaScript", "HTML", "CSS"]
+    skills: ["Python", "C Language", "SQL"]
   },
   {
     name: "Frameworks",
     color: "accent",
-    skills: ["Django", "Flask"]
-  },
-  {
-    name: "AI Tools",
-    color: "primary",
-    skills: ["LLaMA", "Groq", "Gemini", "LangChain"]
+    skills: ["Django (Intermediate)"]
   },
   {
     name: "Data Science",
-    color: "accent",
-    skills: ["Pandas", "NumPy", "Matplotlib", "Seaborn"]
-  },
-  {
-    name: "Databases",
     color: "primary",
-    skills: ["MongoDB", "Redis"]
+    skills: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Feature Engineering", "ML Model Training"]
   },
   {
     name: "QA & Testing",
