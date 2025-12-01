@@ -81,12 +81,13 @@ export function ProjectsSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group"
+              whileHover={{ y: -8 }}
+              className="group h-full"
             >
-              <div className="glass-card p-6 h-full flex flex-col hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
+              <div className="glass-card p-6 h-full min-h-[320px] flex flex-col hover:border-primary/30 transition-all duration-300">
                 {/* Header */}
                 <div className="flex items-start justify-between mb-4">
-                  <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
+                  <div className={`w-12 h-12 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110 ${
                     project.color === "primary" ? "bg-primary/10" : "bg-accent/10"
                   }`}>
                     <project.icon className={`w-6 h-6 ${
@@ -97,7 +98,7 @@ export function ProjectsSection() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    className="text-muted-foreground hover:text-foreground transition-colors p-2 hover:bg-secondary/50 rounded-lg"
                   >
                     <Github size={20} />
                   </a>
@@ -107,13 +108,13 @@ export function ProjectsSection() {
                 <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-sm text-muted-foreground flex-grow mb-4">
+                <p className="text-sm text-muted-foreground flex-grow mb-4 line-clamp-3">
                   {project.description}
                 </p>
 
                 {/* Tech stack */}
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.map((tech) => (
+                  {project.tech.slice(0, 4).map((tech) => (
                     <span
                       key={tech}
                       className="text-xs px-2 py-1 rounded-full bg-secondary/50 text-muted-foreground"
@@ -124,7 +125,7 @@ export function ProjectsSection() {
                 </div>
 
                 {/* Action */}
-                <Button variant="glass" size="sm" asChild className="w-full">
+                <Button variant="glass" size="sm" asChild className="w-full mt-auto">
                   <a href={project.github} target="_blank" rel="noopener noreferrer">
                     View on GitHub
                     <ExternalLink size={14} className="ml-2" />

@@ -58,16 +58,17 @@ export function CertificationsSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group"
+              whileHover={{ y: -8 }}
+              className="group h-full"
             >
-              <div className="glass-card p-6 h-full flex flex-col hover:border-primary/30 transition-all duration-300 relative overflow-hidden">
+              <div className="glass-card p-6 h-full min-h-[320px] flex flex-col hover:border-primary/30 transition-all duration-300 relative overflow-hidden">
                 {/* Glow effect on hover */}
                 <div className={`absolute -top-20 -right-20 w-40 h-40 rounded-full blur-[80px] opacity-0 group-hover:opacity-30 transition-opacity duration-500 ${
                   cert.color === "primary" ? "bg-primary" : "bg-accent"
                 }`} />
 
-                <div className="relative z-10">
-                  <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4 ${
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 ${
                     cert.color === "primary" ? "bg-primary/10" : "bg-accent/10"
                   }`}>
                     <Award className={`w-7 h-7 ${
@@ -89,7 +90,7 @@ export function CertificationsSection() {
                     {cert.description}
                   </p>
 
-                  <Button variant="glass" size="sm" asChild className="w-full">
+                  <Button variant="glass" size="sm" asChild className="w-full mt-auto">
                     <a href={cert.link} target="_blank" rel="noopener noreferrer">
                       View Certificate
                       <ExternalLink size={14} className="ml-2" />

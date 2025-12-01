@@ -67,14 +67,15 @@ export function SkillsSection() {
           </p>
         </motion.div>
 
-        <div className="grid gap-8">
+        <div className="grid md:grid-cols-2 gap-6">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.name}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
-              className="glass-card p-6"
+              whileHover={{ scale: 1.02 }}
+              className="glass-card p-6 hover:border-primary/30 transition-all duration-300"
             >
               <h3 className={`text-lg font-semibold mb-4 ${
                 category.color === "primary" ? "text-primary" : "text-accent"
@@ -91,7 +92,8 @@ export function SkillsSection() {
                       duration: 0.3, 
                       delay: categoryIndex * 0.1 + skillIndex * 0.05 
                     }}
-                    className={`skill-badge ${
+                    whileHover={{ scale: 1.1 }}
+                    className={`skill-badge cursor-default ${
                       category.color === "primary" 
                         ? "hover:border-primary/50 hover:bg-primary/10" 
                         : "hover:border-accent/50 hover:bg-accent/10"
