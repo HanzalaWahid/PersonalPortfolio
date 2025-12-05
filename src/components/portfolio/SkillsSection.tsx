@@ -6,32 +6,32 @@ const skillCategories = [
   {
     name: "Programming",
     color: "primary",
-    skills: ["Python", "R", "JavaScript", "HTML", "CSS"]
+    skills: ["Python", "R", "JavaScript (basic)", "HTML", "CSS"]
   },
   {
     name: "Frameworks",
     color: "accent",
-    skills: ["Django", "Flask"]
+    skills: ["Django", "FastAPI"]
   },
   {
-    name: "AI Tools",
+    name: "AI & ML Tools",
     color: "primary",
-    skills: ["LLaMA", "Groq", "Gemini", "LangChain"]
+    skills: ["LLaMA", "Groq", "Gemini", "LangChain", "Vector Embeddings", "RAG Pipelines"]
   },
   {
     name: "Data Science",
     color: "accent",
-    skills: ["Pandas", "NumPy", "Matplotlib", "Seaborn"]
+    skills: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Feature Engineering", "Model Evaluation"]
   },
   {
     name: "Databases",
     color: "primary",
-    skills: ["MongoDB", "Redis"]
+    skills: ["SQLite / PySQLite", "MongoDB", "Redis"]
   },
   {
     name: "QA & Testing",
     color: "accent",
-    skills: ["API Fox", "Test Automation", "Manual Testing", "Bug Reporting"]
+    skills: ["Test Case Design", "Test Case Documentation", "Manual Testing", "Automation Scripting", "API Fox", "Bug Reporting", "UI/UX Testing Mindset"]
   },
   {
     name: "Soft Skills",

@@ -16,8 +16,8 @@ const projects = [
   {
     icon: GitPullRequest,
     title: "PR Review AI System",
-    description: "Microservices-based PR suggestion and review system built with Django, Flask, Redis, LLaMA, and Groq for intelligent code review automation.",
-    tech: ["Django", "Flask", "Redis", "LLaMA", "Groq"],
+    description: "Microservices-based PR suggestion and review system built with Django, FastAPI, Redis, LLaMA, and Groq for intelligent code review automation.",
+    tech: ["Django", "FastAPI", "Redis", "LLaMA", "Groq"],
     color: "accent",
     github: "https://github.com/HanzalaWahid/Microservices"
   },

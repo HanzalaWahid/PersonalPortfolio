@@ -74,7 +74,7 @@ export function HeroSection() {
             transition={{ delay: 0.4 }}
             className="flex flex-wrap justify-center gap-3 mb-8"
           >
-            {["Python Developer", "AI Engineer", "QA Analyst", "Project Manager"].map((title, i) => (
+            {["Python Developer", "AI Engineer", "QA Analyst"].map((title, i) => (
               <span
                 key={title}
                 className={`px-4 py-1.5 rounded-full text-sm font-medium ${
