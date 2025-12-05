@@ -24,23 +24,24 @@ const experiences = [
     period: "Present",
     color: "accent",
     highlights: [
-      "Validating software releases for production",
-      "Comprehensive bug reporting and tracking",
-      "Product quality assurance and checks",
-      "Collaborating with development teams"
+      "Validate software releases for production",
+      "Perform detailed bug reporting, tracking, and resolution follow-up",
+      "Conduct comprehensive product quality checks",
+      "Collaborate with developers and PM on system architecture and web-flow improvements"
     ]
   },
   {
     icon: Users,
-    title: "QA Automation Intern",
+    title: "QA Automation Engineering Intern",
     company: "Coventech",
     period: "Completed",
     color: "primary",
     highlights: [
-      "Led full product DeftGPT (Chinese company-based)",
-      "Weekly standups with PM, CTO, and developers",
-      "Built automation framework from scratch",
-      "API testing using API Fox, UI/UX review meetings"
+      "Contributed to the DeftGPT product under team lead supervision",
+      "Participated in weekly standups with PM, CTO, and developers",
+      "Built the blog automation framework from scratch and maintained previous scripts",
+      "Performed API testing using API Fox",
+      "Participated in UI/UX review meetings, providing detailed feedback and validations"
     ]
   },
   {
@@ -63,10 +64,10 @@ const experiences = [
     period: "Ongoing",
     color: "primary",
     highlights: [
-      "Building AI-powered tools and applications",
-      "Backend development with Django & Flask",
-      "API development and integration",
-      "Full-stack project understanding"
+      "Build AI-powered tools and applications",
+      "Backend development using Django & FastAPI",
+      "API development and integrations",
+      "Understanding full-stack flow and modern backend systems"
     ]
   }
 ];

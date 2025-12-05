@@ -59,16 +59,13 @@ export function AboutSection() {
               <h3 className="text-2xl font-semibold mb-4 text-foreground">Who I Am</h3>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  I'm a 7th-semester AI student at <span className="text-primary font-medium">Dawood University of Engineering & Technology</span>, 
-                  with a deep passion for building intelligent systems that solve real-world problems.
+                  I am a 7th-semester Artificial Intelligence student at <span className="text-primary font-medium">DUET</span>, passionate about building intelligent systems, automation workflows, and high-quality digital products.
                 </p>
                 <p>
-                  My journey spans across Python development, AI engineering, QA automation, and project management. 
-                  I thrive at the intersection of technology and leadership, leading teams while staying hands-on with code.
+                  My experience spans Python development, AI engineering, and QA automation, allowing me to work across backend systems, machine learning pipelines, and software quality assurance with strong technical depth.
                 </p>
                 <p>
-                  Currently serving as <span className="text-accent font-medium">Project Manager at Rasinnovatech</span>, 
-                  I orchestrate sprints, coordinate with clients, and ensure our products exceed expectations.
+                  Alongside development, I collaborate with PMs and engineering teams, contribute to system flow discussions, and help deliver scalable, reliable technology solutions.
                 </p>
               </div>
             </div>
