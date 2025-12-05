@@ -19,7 +19,7 @@ html {
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 9%;
 
-    --primary: 197 100% 40%;
+    --primary: 165 70% 40%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 94%;
@@ -28,7 +28,7 @@ html {
     --muted: 0 0% 90%;
     --muted-foreground: 0 0% 40%;
 
-    --accent: 153 63% 40%;
+    --accent: 165 70% 35%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -36,19 +36,19 @@ html {
 
     --border: 0 0% 85%;
     --input: 0 0% 85%;
-    --ring: 197 100% 40%;
+    --ring: 165 70% 40%;
 
     --radius: 0.75rem;
 
     /* Custom gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(197, 100%, 40%) 0%, hsl(197, 100%, 30%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(153, 63%, 40%) 0%, hsl(153, 63%, 30%) 100%);
-    --gradient-hero: linear-gradient(180deg, hsl(0, 0%, 98%) 0%, hsl(197, 30%, 95%) 50%, hsl(0, 0%, 98%) 100%);
-    --gradient-glow: radial-gradient(ellipse 80% 50% at 50% -20%, hsl(197, 100%, 40%, 0.15) 0%, transparent 50%);
+    --gradient-primary: linear-gradient(135deg, hsl(165, 70%, 40%) 0%, hsl(165, 70%, 30%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(165, 70%, 35%) 0%, hsl(165, 70%, 25%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(0, 0%, 98%) 0%, hsl(165, 30%, 95%) 50%, hsl(0, 0%, 98%) 100%);
+    --gradient-glow: radial-gradient(ellipse 80% 50% at 50% -20%, hsl(165, 70%, 40%, 0.15) 0%, transparent 50%);
 
     /* Shadows */
-    --shadow-glow-primary: 0 0 60px hsl(197, 100%, 40%, 0.25);
-    --shadow-glow-accent: 0 0 60px hsl(153, 63%, 40%, 0.25);
+    --shadow-glow-primary: 0 0 60px hsl(165, 70%, 40%, 0.25);
+    --shadow-glow-accent: 0 0 60px hsl(165, 70%, 35%, 0.25);
     --shadow-card: 0 4px 20px hsl(0, 0%, 0%, 0.08);
     --shadow-card-hover: 0 12px 40px hsl(0, 0%, 0%, 0.12);
 
@@ -67,7 +67,7 @@ html {
     --popover: 0 0% 7%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 197 100% 45%;
+    --primary: 165 70% 50%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 12%;
@@ -76,7 +76,7 @@ html {
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 64%;
 
-    --accent: 153 63% 45%;
+    --accent: 165 70% 42%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -84,17 +84,17 @@ html {
 
     --border: 0 0% 18%;
     --input: 0 0% 18%;
-    --ring: 197 100% 45%;
+    --ring: 165 70% 50%;
 
     /* Custom gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(197, 100%, 45%) 0%, hsl(197, 100%, 35%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(153, 63%, 45%) 0%, hsl(153, 63%, 35%) 100%);
-    --gradient-hero: linear-gradient(180deg, hsl(0, 0%, 4%) 0%, hsl(197, 30%, 6%) 50%, hsl(0, 0%, 4%) 100%);
-    --gradient-glow: radial-gradient(ellipse 80% 50% at 50% -20%, hsl(197, 100%, 45%, 0.3) 0%, transparent 50%);
+    --gradient-primary: linear-gradient(135deg, hsl(165, 70%, 50%) 0%, hsl(165, 70%, 38%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(165, 70%, 42%) 0%, hsl(165, 70%, 32%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(0, 0%, 4%) 0%, hsl(165, 30%, 6%) 50%, hsl(0, 0%, 4%) 100%);
+    --gradient-glow: radial-gradient(ellipse 80% 50% at 50% -20%, hsl(165, 70%, 50%, 0.3) 0%, transparent 50%);
 
     /* Shadows */
-    --shadow-glow-primary: 0 0 60px hsl(197, 100%, 45%, 0.4);
-    --shadow-glow-accent: 0 0 60px hsl(153, 63%, 45%, 0.4);
+    --shadow-glow-primary: 0 0 60px hsl(165, 70%, 50%, 0.4);
+    --shadow-glow-accent: 0 0 60px hsl(165, 70%, 42%, 0.4);
     --shadow-card: 0 8px 32px hsl(0, 0%, 0%, 0.4);
     --shadow-card-hover: 0 16px 48px hsl(0, 0%, 0%, 0.6);
 
@@ -167,7 +167,7 @@ html {
     inset: 0;
     padding: 1px;
     border-radius: inherit;
-    background: linear-gradient(135deg, hsl(197, 100%, 45%, 0.5), hsl(153, 63%, 45%, 0.5));
+    background: linear-gradient(135deg, hsl(165, 70%, 50%, 0.5), hsl(165, 70%, 35%, 0.5));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
