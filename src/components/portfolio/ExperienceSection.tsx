@@ -6,7 +6,7 @@ import { Building2, Users, Bug, GraduationCap, Code } from "lucide-react";
 const experiences = [
   {
     icon: Building2,
-    title: "Project Manager",
+    title: "Project Manager ",
     company: "Rasinnovatech",
     period: "Present",
     color: "primary",
@@ -21,7 +21,7 @@ const experiences = [
     icon: Bug,
     title: "QA Analyst",
     company: "TechForge",
-    period: "Present",
+    period: "Oct 2025 - Dec 2025",
     color: "accent",
     highlights: [
       "Validate software releases for production",
@@ -48,7 +48,7 @@ const experiences = [
     icon: GraduationCap,
     title: "Instructor",
     company: "Private",
-    period: "Ongoing",
+    period: "Oct 2022 - Nov 2025",
     color: "accent",
     highlights: [
       "Teaching Python programming fundamentals",
@@ -72,88 +72,89 @@ const experiences = [
   }
 ];
 
+import { Reveal } from "./Reveal";
+import { TiltCard } from "./TiltCard";
+
 export function ExperienceSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="experience" className="py-24 bg-card/30">
+    <section id="experience" className="py-24">
       <div className="section-container" ref={ref}>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <span className="text-primary text-sm font-medium tracking-wider uppercase">Experience</span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-2 mb-4">
-            Professional{" "}
-            <span className="text-gradient-accent">Journey</span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            A track record of delivering excellence across diverse roles
-          </p>
-        </motion.div>
+        <Reveal width="100%">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16"
+          >
+            <span className="text-primary text-sm font-medium tracking-wider uppercase">Experience</span>
+            <h2 className="text-4xl md:text-5xl font-bold mt-2 mb-4">
+              Professional{" "}
+              <span className="text-gradient-accent">Journey</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              A track record of delivering excellence across diverse roles
+            </p>
+          </motion.div>
+        </Reveal>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-accent to-primary/20" />
+        <div className="relative max-w-5xl mx-auto">
+          {/* Timeline center line */}
+          <div className="absolute left-[2.25rem] md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-accent to-primary/20 -translate-x-1/2 hidden md:block" />
 
-          <div className="space-y-12">
+          <div className="space-y-8">
             {experiences.map((exp, index) => (
-              <motion.div
-                key={exp.title + exp.company}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`relative flex items-start gap-8 ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
-              >
-                {/* Timeline dot */}
-                <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-background border-2 border-primary z-10" />
+              <Reveal key={exp.title + exp.company} delay={index * 0.1} width="100%">
+                <div className={`relative flex flex-col md:flex-row items-center gap-8 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                  }`}>
+                  {/* Timeline dot */}
+                  <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-background border-2 border-primary z-10 hidden md:block" />
 
-                {/* Content */}
-                <div className={`flex-1 ml-16 md:ml-0 ${index % 2 === 0 ? "md:pr-16" : "md:pl-16"}`}>
-                  <div className="glass-card p-6 hover:border-primary/30 transition-all duration-300">
-                    <div className="flex items-start gap-4">
-                      <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
-                        exp.color === "primary" ? "bg-primary/10" : "bg-accent/10"
-                      }`}>
-                        <exp.icon className={`w-6 h-6 ${
-                          exp.color === "primary" ? "text-primary" : "text-accent"
-                        }`} />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between flex-wrap gap-2">
-                          <h3 className="text-xl font-semibold text-foreground">{exp.title}</h3>
-                          <span className="text-xs px-3 py-1 rounded-full bg-secondary text-muted-foreground">
-                            {exp.period}
-                          </span>
-                        </div>
-                        <p className={`text-sm font-medium mt-1 ${
-                          exp.color === "primary" ? "text-primary" : "text-accent"
-                        }`}>
-                          {exp.company}
-                        </p>
-                        <ul className="mt-4 space-y-2">
-                          {exp.highlights.map((highlight, i) => (
-                            <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                              <span className={`w-1.5 h-1.5 rounded-full mt-1.5 ${
-                                exp.color === "primary" ? "bg-primary" : "bg-accent"
+                  {/* Content Card container */}
+                  <div className="w-full md:w-[calc(50%-2rem)]">
+                    <TiltCard>
+                      <div className="glass-card p-6 min-h-[240px] flex flex-col hover:border-primary/30 transition-all duration-300 interactive group">
+                        <div className="flex items-start gap-4 flex-1">
+                          <div className={`w-12 h-12 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110 ${exp.color === "primary" ? "bg-primary/10" : "bg-accent/10"
+                            }`}>
+                            <exp.icon className={`w-6 h-6 ${exp.color === "primary" ? "text-primary" : "text-accent"
                               }`} />
-                              {highlight}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center justify-between flex-wrap gap-2 mb-2">
+                              <div>
+                                <h3 className="text-xl font-bold text-foreground leading-tight">{exp.title}</h3>
+                                <p className={`text-sm font-semibold ${exp.color === "primary" ? "text-primary" : "text-accent"
+                                  }`}>
+                                  {exp.company}
+                                </p>
+                              </div>
+                              <span className="text-[10px] uppercase tracking-wider font-bold px-3 py-1 rounded-full bg-secondary/80 text-muted-foreground border border-border/50">
+                                {exp.period}
+                              </span>
+                            </div>
 
-                {/* Empty space for alternating layout */}
-                <div className="hidden md:block flex-1" />
-              </motion.div>
+                            <ul className="space-y-3 mt-4">
+                              {exp.highlights.map((highlight, i) => (
+                                <li key={i} className="text-sm text-muted-foreground flex items-start gap-3 leading-relaxed">
+                                  <span className={`w-1 h-4 rounded-full mt-0.5 shrink-0 ${exp.color === "primary" ? "bg-primary/50" : "bg-accent/50"
+                                    }`} />
+                                  <span>{highlight}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </TiltCard>
+                  </div>
+
+                  {/* Spacer for alternating layout */}
+                  <div className="hidden md:block w-full md:w-[calc(50%-2rem)]" />
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>

@@ -11,17 +11,17 @@ const skillCategories = [
   {
     name: "Frameworks",
     color: "accent",
-    skills: ["Django", "FastAPI"]
+    skills: ["Django", "FastAPI", "Streamlit"]
   },
   {
     name: "AI & ML Tools",
     color: "primary",
-    skills: ["LLaMA", "Groq", "Gemini", "LangChain", "Vector Embeddings", "RAG Pipelines"]
+    skills: ["LLaMA", "Groq", "Gemini", "LangChain", "Vector Embeddings", "RAG Pipelines", "NLP", "Computer Vision", "Machine Learning", "Deep Learning",]
   },
   {
     name: "Data Science",
     color: "accent",
-    skills: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Feature Engineering", "Model Evaluation"]
+    skills: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Feature Engineering", "Model Evaluation", "Feature Selection", "Feature Extraction", "Data Cleaning", "Data Visualization"]
   },
   {
     name: "Databases",
@@ -31,14 +31,17 @@ const skillCategories = [
   {
     name: "QA & Testing",
     color: "accent",
-    skills: ["Test Case Design", "Test Case Documentation", "Manual Testing", "Automation Scripting", "API Fox", "Bug Reporting", "UI/UX Testing Mindset"]
+    skills: ["Test Case Design", "Test Case Documentation", "Manual Testing", "Automation Scripting", "API Fox", "Bug Reporting", "UI/UX Testing Mindset", "Regression Testing", "Smoke Testing"]
   },
   {
     name: "Soft Skills",
     color: "primary",
-    skills: ["Communication", "Teamwork", "Time Management", "Leadership"]
+    skills: ["Communication", "Teamwork", "Time Management", "Leadership", "Learning mindset", "Problem Solving"]
   }
 ];
+
+import { Reveal } from "./Reveal";
+import { TiltCard } from "./TiltCard";
 
 export function SkillsSection() {
   const ref = useRef(null);
@@ -46,64 +49,51 @@ export function SkillsSection() {
 
   return (
     <section id="skills" className="py-24 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-primary/5 rounded-full blur-[150px] -translate-y-1/2" />
-      <div className="absolute top-1/2 right-0 w-96 h-96 bg-accent/5 rounded-full blur-[150px] -translate-y-1/2" />
-
       <div className="section-container relative z-10" ref={ref}>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <span className="text-accent text-sm font-medium tracking-wider uppercase">Skills</span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-2 mb-4">
-            Technical{" "}
-            <span className="text-gradient-primary">Expertise</span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            A comprehensive toolkit for building modern applications
-          </p>
-        </motion.div>
+        <Reveal width="100%">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-10"
+          >
+            <span className="text-accent text-sm font-medium tracking-wider uppercase">Skills</span>
+            <h2 className="text-4xl md:text-5xl font-bold mt-2 mb-4">
+              Technical{" "}
+              <span className="text-gradient-primary">Expertise</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              A comprehensive toolkit for building modern applications
+            </p>
+          </motion.div>
+        </Reveal>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-4 items-stretch auto-rows-fr">
           {skillCategories.map((category, categoryIndex) => (
-            <motion.div
-              key={category.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
-              whileHover={{ scale: 1.02 }}
-              className="glass-card p-6 hover:border-primary/30 transition-all duration-300"
-            >
-              <h3 className={`text-lg font-semibold mb-4 ${
-                category.color === "primary" ? "text-primary" : "text-accent"
-              }`}>
-                {category.name}
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {category.skills.map((skill, skillIndex) => (
-                  <motion.span
-                    key={skill}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ 
-                      duration: 0.3, 
-                      delay: categoryIndex * 0.1 + skillIndex * 0.05 
-                    }}
-                    whileHover={{ scale: 1.1 }}
-                    className={`skill-badge cursor-default ${
-                      category.color === "primary" 
-                        ? "hover:border-primary/50 hover:bg-primary/10" 
-                        : "hover:border-accent/50 hover:bg-accent/10"
-                    }`}
-                  >
-                    {skill}
-                  </motion.span>
-                ))}
-              </div>
-            </motion.div>
+            <Reveal key={category.name} delay={categoryIndex * 0.1} width="100%">
+              <TiltCard>
+                <div className="glass-card p-5 h-full hover:border-primary/30 transition-all duration-300 flex flex-col">
+                  <h3 className={`text-lg font-semibold mb-3 ${category.color === "primary" ? "text-primary" : "text-accent"
+                    }`}>
+                    {category.name}
+                  </h3>
+                  <div className="flex flex-wrap gap-2 flex-1">
+                    {category.skills.map((skill, skillIndex) => (
+                      <motion.span
+                        key={skill}
+                        whileHover={{ scale: 1.05 }}
+                        className={`skill-badge cursor-default interactive text-xs py-1.5 px-3 ${category.color === "primary"
+                          ? "hover:border-primary/50 hover:bg-primary/10"
+                          : "hover:border-accent/50 hover:bg-accent/10"
+                          }`}
+                      >
+                        {skill}
+                      </motion.span>
+                    ))}
+                  </div>
+                </div>
+              </TiltCard>
+            </Reveal>
           ))}
         </div>
       </div>
