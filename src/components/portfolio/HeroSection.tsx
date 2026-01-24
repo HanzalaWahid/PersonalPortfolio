@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import profileImage from "@/assets/profile.jpg";
 import { Reveal } from "./Reveal";
 import { HoverCardPortal } from "@radix-ui/react-hover-card";
-import { SkillsCube } from "./SkillsCube";
 
 export function HeroSection() {
   return (
