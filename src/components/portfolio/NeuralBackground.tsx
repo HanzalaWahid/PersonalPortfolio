@@ -12,8 +12,8 @@ export function NeuralBackground() {
 
         let animationFrameId: number;
         let particles: Particle[] = [];
-        const particleCount = 200; // Even more density for a rich look
-        const connectionDistance = 180;
+        let particleCount = window.innerWidth < 768 ? 50 : 200; // Adjusted for mobile
+        let connectionDistance = window.innerWidth < 768 ? 100 : 180; // Adjusted for mobile
 
         class Particle {
             x: number;
@@ -47,17 +47,20 @@ export function NeuralBackground() {
             }
         }
 
-        const resize = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            init();
-        };
-
         const init = () => {
             particles = [];
             for (let i = 0; i < particleCount; i++) {
                 particles.push(new Particle());
             }
+        };
+
+        const resize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            // Update params on resize
+            particleCount = window.innerWidth < 768 ? 50 : 200;
+            connectionDistance = window.innerWidth < 768 ? 100 : 180;
+            init();
         };
 
         const drawConnections = () => {
