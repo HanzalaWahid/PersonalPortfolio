@@ -15,7 +15,7 @@ export function HeroSection() {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
+              transition={{ delay: 0.1 }}
               className="mb-8 relative"
             >
               <div className="relative inline-block">
@@ -33,7 +33,7 @@ export function HeroSection() {
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
+              transition={{ delay: 0.15 }}
               className="text-5xl md:text-7xl font-bold mb-4"
             >
               Muhammad{" "}
@@ -45,7 +45,7 @@ export function HeroSection() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
+              transition={{ delay: 0.2 }}
               className="flex flex-wrap justify-center gap-3 mb-8"
 
             >
@@ -66,7 +66,7 @@ export function HeroSection() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
+              transition={{ delay: 0.25 }}
               className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
             >
               Passionate about building intelligent systems and delivering quality software.
@@ -77,7 +77,7 @@ export function HeroSection() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
+              transition={{ delay: 0.3 }}
               className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
             >
               <Button variant="hero" size="lg" className="interactive animate-attention-pulse" asChild>
@@ -98,7 +98,7 @@ export function HeroSection() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.7 }}
+              transition={{ delay: 0.35 }}
               className="flex items-center justify-center gap-6"
             >
               <a

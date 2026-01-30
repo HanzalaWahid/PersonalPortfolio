@@ -7,7 +7,7 @@ export function LoadingScreen() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setLoading(false);
-        }, 2500);
+        }, 1000);
         return () => clearTimeout(timer);
     }, []);
 
@@ -18,7 +18,7 @@ export function LoadingScreen() {
                     initial={{ opacity: 1 }}
                     exit={{
                         opacity: 0,
-                        transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
+                        transition: { duration: 0.5, ease: [0.76, 0, 0.24, 1] }
                     }}
                     className="fixed inset-0 z-[9999] flex items-center justify-center bg-background"
                 >
@@ -27,7 +27,7 @@ export function LoadingScreen() {
                         <motion.div
                             initial={{ y: 20, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
+                            transition={{ duration: 0.5, delay: 0.1 }}
                             className="mb-8"
                         >
                             <h1 className="text-4xl md:text-6xl font-bold tracking-tighter">
@@ -41,7 +41,7 @@ export function LoadingScreen() {
                                 initial={{ x: "-100%" }}
                                 animate={{ x: "0%" }}
                                 transition={{
-                                    duration: 2,
+                                    duration: 0.8,
                                     ease: "easeInOut",
                                     repeat: 0
                                 }}
@@ -53,7 +53,7 @@ export function LoadingScreen() {
                         <motion.p
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ delay: 1, duration: 0.5 }}
+                            transition={{ delay: 0.4, duration: 0.4 }}
                             className="mt-4 text-xs tracking-[0.3em] font-medium text-muted-foreground uppercase"
                         >
                             Loading Experience
