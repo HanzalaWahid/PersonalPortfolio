@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Download, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import profileImage from "@/assets/profile.jpg";
+import profileImage from "@/assets/profile_pic.jpeg";
 import { Reveal } from "./Reveal";
-import { HoverCardPortal } from "@radix-ui/react-hover-card";
 
 export function HeroSection() {
   return (
@@ -11,7 +10,6 @@ export function HeroSection() {
       <div className="relative z-10 section-container text-center">
         <Reveal width="100%">
           <motion.div>
-            {/* Profile Image */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -29,7 +27,6 @@ export function HeroSection() {
               </div>
             </motion.div>
 
-            {/* Name */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -41,15 +38,13 @@ export function HeroSection() {
               Wahid
             </motion.h1>
 
-            {/* Titles */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
               className="flex flex-wrap justify-center gap-3 mb-8"
-
             >
-              {["Python Developer", "AI Engineer", "QA Engineer"].map((title, i) => (
+              {["AI Engineer", "Python Developer", "AI Automation"].map((title, i) => (
                 <span
                   key={title}
                   className={`px-4 py-1.5 rounded-full text-sm font-medium ${i % 2 === 0
@@ -62,18 +57,16 @@ export function HeroSection() {
               ))}
             </motion.div>
 
-            {/* Description */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25 }}
               className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
             >
-              Passionate about building intelligent systems and delivering quality software.
-              Currently pursuing AI at DUET while leading teams and crafting exceptional digital experiences.
+              AI Engineer and Python Developer building AI-powered applications, automation workflows,
+              backend systems, and practical software products.
             </motion.p>
 
-            {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -82,7 +75,7 @@ export function HeroSection() {
             >
               <Button variant="hero" size="lg" className="interactive animate-attention-pulse" asChild>
                 <a href="#contact">
-                  Connect With Me
+                  Let&apos;s Talk
                   <ArrowRight className="ml-2" size={18} />
                 </a>
               </Button>
@@ -94,7 +87,6 @@ export function HeroSection() {
               </Button>
             </motion.div>
 
-            {/* Social Links */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

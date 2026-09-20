@@ -119,16 +119,16 @@ export function ContactSection() {
               
               <div className="space-y-6 mb-8">
                 {contactInfo.map((info) => (
-                  <div key={info.label} className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <info.icon className="w-5 h-5 text-primary" />
+                  <div key={info.label} className="flex items-center gap-4 rounded-2xl border border-border/60 bg-slate-950/30 p-3 transition-colors duration-300 hover:border-primary/30 hover:bg-primary/5">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 ring-1 ring-primary/20">
+                      <info.icon className="h-5 w-5 text-primary" />
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">{info.label}</p>
                       {info.href ? (
                         <a 
                           href={info.href} 
-                          className="text-foreground hover:text-primary transition-colors"
+                          className="text-foreground transition-colors hover:text-primary"
                         >
                           {info.value}
                         </a>
@@ -149,7 +149,7 @@ export function ContactSection() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
+                      className="flex h-12 w-12 items-center justify-center rounded-xl border border-border/60 bg-slate-950/60 text-muted-foreground transition-all duration-300 hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
                     >
                       <social.icon size={20} />
                     </a>
@@ -178,7 +178,7 @@ export function ContactSection() {
                     name="name"
                     placeholder="John Doe"
                     required
-                    className="bg-secondary/50 border-border/50 focus:border-primary"
+                    className="border-border/70 bg-slate-950/60 text-foreground placeholder:text-muted-foreground/80 focus:border-primary/70 focus:ring-2 focus:ring-primary/20"
                   />
                 </div>
                 
@@ -192,7 +192,7 @@ export function ContactSection() {
                     type="email"
                     placeholder="john@example.com"
                     required
-                    className="bg-secondary/50 border-border/50 focus:border-primary"
+                    className="border-border/70 bg-slate-950/60 text-foreground placeholder:text-muted-foreground/80 focus:border-primary/70 focus:ring-2 focus:ring-primary/20"
                   />
                 </div>
                 
@@ -206,7 +206,7 @@ export function ContactSection() {
                     placeholder="Tell me about your project..."
                     rows={5}
                     required
-                    className="bg-secondary/50 border-border/50 focus:border-primary resize-none"
+                    className="resize-none border-border/70 bg-slate-950/60 text-foreground placeholder:text-muted-foreground/80 focus:border-primary/70 focus:ring-2 focus:ring-primary/20"
                   />
                 </div>
 

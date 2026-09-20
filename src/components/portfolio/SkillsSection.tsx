@@ -6,37 +6,47 @@ const skillCategories = [
   {
     name: "Programming",
     color: "primary",
-    skills: ["Python", "R", "JavaScript (basic)", "HTML", "CSS"]
+    skills: ["Python", "SQL", "HTML", "CSS", "JavaScript (Basic)"]
   },
   {
-    name: "Frameworks",
+    name: "Backend & APIs",
     color: "accent",
-    skills: ["Django", "FastAPI", "Streamlit"]
+    skills: ["Django", "Django REST Framework", "FastAPI", "Flask", "REST APIs", "API Integration", "ORM"]
   },
   {
-    name: "AI & ML Tools",
+    name: "AI & Machine Learning",
     color: "primary",
-    skills: ["LLaMA", "Groq", "Gemini", "LangChain", "Vector Embeddings", "RAG Pipelines", "NLP", "Computer Vision", "Machine Learning", "Deep Learning",]
+    skills: ["Machine Learning", "Deep Learning", "NLP", "LLM Applications", "Generative AI", "RAG", "Vector Embeddings", "AI Automation", "Computer Vision", "Model Evaluation"]
+  },
+  {
+    name: "AI / LLM Technologies",
+    color: "accent",
+    skills: ["OpenAI", "Groq", "LangChain", "LLM APIs", "RAG Pipelines", "Vector Databases", "Prompt Engineering", "AI Agents / Tool Calling"]
   },
   {
     name: "Data Science",
-    color: "accent",
-    skills: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Feature Engineering", "Model Evaluation", "Feature Selection", "Feature Extraction", "Data Cleaning", "Data Visualization"]
+    color: "primary",
+    skills: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "SciPy", "Data Cleaning", "Feature Engineering", "Data Visualization", "Statistical Analysis", "Model Evaluation"]
   },
   {
     name: "Databases",
-    color: "primary",
-    skills: ["SQLite / PySQLite", "MongoDB", "Redis"]
-  },
-  {
-    name: "QA & Testing",
     color: "accent",
-    skills: ["Test Case Design", "Test Case Documentation", "Manual Testing", "Automation Scripting", "API Fox", "Bug Reporting", "UI/UX Testing Mindset", "Regression Testing", "Smoke Testing"]
+    skills: ["Oracle SQL", "PostgreSQL", "SQLite", "MongoDB", "Redis", "SQLAlchemy", "Relational Databases", "NoSQL"]
   },
   {
-    name: "Soft Skills",
+    name: "Automation & Development",
     color: "primary",
-    skills: ["Communication", "Teamwork", "Time Management", "Leadership", "Learning mindset", "Problem Solving"]
+    skills: ["Git", "GitHub", "Python Automation", "Playwright", "API Automation", "Docker", "CI/CD Concepts", "Linux", "Azure Blob Storage"]
+  },
+  {
+    name: "QA / Testing",
+    color: "accent",
+    skills: ["Manual Testing", "API Testing", "Test Case Design", "Regression Testing", "Smoke Testing", "Bug Reporting", "UI/UX Testing", "Test Automation"]
+  },
+  {
+    name: "Professional Skills",
+    color: "primary",
+    skills: ["Problem Solving", "Communication", "Teamwork", "Requirement Analysis", "Technical Documentation", "Client Coordination", "Leadership", "Continuous Learning"]
   }
 ];
 
@@ -63,7 +73,7 @@ export function SkillsSection() {
               <span className="text-gradient-primary">Expertise</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              A comprehensive toolkit for building modern applications
+              AI engineering, backend systems, automation, and practical software development.
             </p>
           </motion.div>
         </Reveal>
@@ -73,19 +83,17 @@ export function SkillsSection() {
             <Reveal key={category.name} delay={categoryIndex * 0.1} width="100%">
               <TiltCard>
                 <div className="glass-card p-5 h-full hover:border-primary/30 transition-all duration-300 flex flex-col">
-                  <h3 className={`text-lg font-semibold mb-3 ${category.color === "primary" ? "text-primary" : "text-accent"
-                    }`}>
+                  <h3 className={`text-lg font-semibold mb-3 ${category.color === "primary" ? "text-primary" : "text-accent"}`}>
                     {category.name}
                   </h3>
                   <div className="flex flex-wrap gap-2 flex-1">
-                    {category.skills.map((skill, skillIndex) => (
+                    {category.skills.map((skill) => (
                       <motion.span
                         key={skill}
                         whileHover={{ scale: 1.05 }}
                         className={`skill-badge cursor-default interactive text-xs py-1.5 px-3 ${category.color === "primary"
                           ? "hover:border-primary/50 hover:bg-primary/10"
-                          : "hover:border-accent/50 hover:bg-accent/10"
-                          }`}
+                          : "hover:border-accent/50 hover:bg-accent/10"}`}
                       >
                         {skill}
                       </motion.span>

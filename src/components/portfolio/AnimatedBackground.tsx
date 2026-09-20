@@ -1,83 +1,35 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { NeuralBackground } from "./NeuralBackground";
 import { FloatingCubesGroup } from "./SkillsCube";
 
 export function AnimatedBackground() {
-    return (
-        <div className="fixed inset-0 z-0 bg-[#050505] overflow-hidden pointer-events-none">
-            {/* Stable Neural Particles Background */}
-            <NeuralBackground />
+  const reduceMotion = useReducedMotion();
 
-            {/* Global Floating 3D Cubes */}
-            <FloatingCubesGroup />
+  return (
+    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-[#070a13]">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(124,58,237,0.2),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(6,182,212,0.12),_transparent_32%)]" />
+      <div className="absolute inset-0 opacity-30" style={{ backgroundImage: "linear-gradient(rgba(148,163,184,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.08) 1px, transparent 1px)", backgroundSize: "72px 72px" }} />
+      <NeuralBackground />
+      <FloatingCubesGroup />
 
-            {/* Cinematic Liquid Mesh Layer / Fallback Gradient */}
-            <motion.div
-                initial={{ scale: 1.1, opacity: 0 }}
-                animate={{
-                    scale: [1.1, 1.2, 1.1],
-                    x: [0, -20, 0],
-                    y: [0, 10, 0],
-                    opacity: 0.3
-                }}
-                transition={{
-                    duration: 30,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                }}
-                className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-40 mix-blend-screen"
-                style={{
-                    // Using a dark gray radial gradient instead of blue
-                    background: 'radial-gradient(circle at center, #1a1a1a 0%, #050505 100%)',
-                    filter: 'contrast(1.1) brightness(0.8) saturate(0)'
-                }}
-            />
+      {!reduceMotion && (
+        <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0.18, 0.24, 0.18], scale: [1, 1.06, 1] }}
+            transition={{ duration: 18, ease: "easeInOut", repeat: Infinity }}
+            className="absolute -left-24 top-16 h-72 w-72 rounded-full bg-violet-500/15 blur-[120px]"
+          />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0.12, 0.18, 0.12], scale: [1, 1.08, 1] }}
+            transition={{ duration: 22, ease: "easeInOut", repeat: Infinity, delay: 1.2 }}
+            className="absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-cyan-400/10 blur-[120px]"
+          />
+        </>
+      )}
 
-            {/* Dynamic Glow Overlays - Switched to subtle silver/gray */}
-            <div className="absolute inset-0 opacity-20 dark:opacity-30 z-10">
-                <motion.div
-                    animate={{
-                        x: [0, 100, 0],
-                        y: [0, -50, 0],
-                        scale: [1, 1.2, 1],
-                    }}
-                    transition={{
-                        duration: 20,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                    }}
-                    className="absolute -top-[10%] -left-[10%] w-[70%] h-[70%] bg-white/5 blur-[130px] rounded-full"
-                />
-                <motion.div
-                    animate={{
-                        x: [0, -100, 0],
-                        y: [0, 50, 0],
-                        scale: [1, 1.1, 1],
-                    }}
-                    transition={{
-                        duration: 25,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                    }}
-                    className="absolute -bottom-[10%] -right-[10%] w-[70%] h-[70%] bg-white/5 blur-[130px] rounded-full"
-                />
-            </div>
-
-            {/* Subtle Noise Texture */}
-            <div className="absolute inset-0 opacity-[0.04] dark:opacity-[0.06] pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')] z-20" />
-
-            {/* Scanning Laser Line */}
-            <motion.div
-                animate={{
-                    y: ["-10%", "110%"],
-                }}
-                transition={{
-                    duration: 12,
-                    repeat: Infinity,
-                    ease: "linear",
-                }}
-                className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent top-0 opacity-30 shadow-[0_0_15px_hsl(var(--primary))] z-30"
-            />
-        </div>
-    );
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_48%,_rgba(7,10,19,0.78)_100%)]" />
+    </div>
+  );
 }

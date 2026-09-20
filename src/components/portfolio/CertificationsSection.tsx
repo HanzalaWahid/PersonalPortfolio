@@ -1,104 +1,220 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useMemo, useRef, useState } from "react";
 import { Award, ExternalLink } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
-const certifications = [
+type Certificate = {
+  id: string;
+  title: string;
+  issuer: string;
+  description?: string;
+  image?: string;
+  verificationUrl?: string;
+  year?: string;
+};
+
+const certificates: Certificate[] = [
   {
-    title: "Python Project for Data Science",
-    issuer: "IBM",
-    description: "Comprehensive certification covering Python fundamentals and data science project implementation.",
-    link: "https://www.coursera.org/account/accomplishments/verify/R4PWUHMVML4G",
-    color: "primary"
+    id: "ibm-python-project-data-science",
+    title: "IBM — Python Project for Data Science",
+    issuer: "IBM / Coursera",
+    description: "Python, data analysis, and practical data science workflows.",
+    verificationUrl: "https://www.coursera.org/account/accomplishments/verify/R4PWUHMVML4G",
   },
   {
-    title: "Data Visualization in Excel",
+    id: "coursera-data-visualization-in-excel",
+    title: "Coursera — Data Visualization in Excel",
     issuer: "Coursera",
-    description: "Professional certification in creating impactful data visualizations using Excel.",
-    link: "https://www.coursera.org/account/accomplishments/verify/U5Q7RFMF8ZTW",
-    color: "accent"
+    description: "Data visualization and dashboard development using Excel.",
+    verificationUrl: "https://www.coursera.org/account/accomplishments/verify/U5Q7RFMF8ZTW",
   },
   {
-    title: "Soft Skills Assessment",
-    issuer: "IBM",
-    description: "Assessment certification validating professional soft skills and workplace competencies.",
-    link: "https://www.coursera.org/account/accomplishments/verify/RJLSH7TS84EP",
-    color: "primary"
-  }
+    id: "ibm-soft-skills-assessment",
+    title: "IBM — Soft Skills Assessment",
+    issuer: "IBM / Coursera",
+    description: "Professional communication and workplace competency assessment.",
+    verificationUrl: "https://www.coursera.org/account/accomplishments/verify/RJLSH7TS84EP",
+  },
 ];
 
-export function CertificationsSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+function CertificateCard({
+  certificate,
+  isPaused,
+}: {
+  certificate: Certificate;
+  isPaused: boolean;
+}) {
+  return (
+    <motion.article
+      whileHover={{ scale: 1.03, y: -4 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
+      className="group h-full"
+      style={{ willChange: "transform" }}
+    >
+      <div className="glass-card relative flex h-full min-h-[290px] flex-col overflow-hidden rounded-[22px] border border-border/60 bg-card/80 p-4 text-left shadow-[0_10px_30px_rgba(15,23,42,0.05)] transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-[0_16px_40px_rgba(15,23,42,0.08)]">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.5),_transparent_55%)] opacity-60" />
+
+        <div className="relative z-10 flex h-full flex-col">
+          {certificate.image ? (
+            <div className="mb-4 overflow-hidden rounded-xl border border-border/60 bg-white/80 p-2 shadow-sm">
+              <img
+                src={certificate.image}
+                alt={`Certificate title ${certificate.title} issued by ${certificate.issuer}`}
+                className="h-40 w-full object-contain"
+              />
+            </div>
+          ) : (
+            <div className="mb-4 flex h-40 items-center justify-center rounded-xl border border-dashed border-border/70 bg-secondary/30 text-muted-foreground">
+              <div className="flex flex-col items-center gap-2">
+                <Award className="h-8 w-8 text-foreground/75" />
+                <span className="text-xs font-medium uppercase tracking-[0.18em]">Certificate</span>
+              </div>
+            </div>
+          )}
+
+          <div className="mb-2 flex items-center justify-between gap-3">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary/80">
+              {certificate.issuer}
+            </span>
+            {certificate.year ? (
+              <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                {certificate.year}
+              </span>
+            ) : null}
+          </div>
+
+          <h3 className="text-lg font-semibold leading-snug text-foreground">{certificate.title}</h3>
+
+          {certificate.description ? (
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{certificate.description}</p>
+          ) : null}
+
+          <div className="mt-auto pt-4">
+            {certificate.verificationUrl ? (
+              <a
+                href={certificate.verificationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Verify certificate: ${certificate.title}`}
+                className={`inline-flex w-full items-center justify-center gap-2 rounded-full border border-border/70 bg-background/70 px-3 py-2.5 text-sm font-medium text-foreground transition-colors duration-200 hover:border-primary/40 hover:bg-primary/5 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:ring-offset-2 ${isPaused ? "cursor-default" : ""}`}
+              >
+                Verify Certificate
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            ) : null}
+          </div>
+        </div>
+      </div>
+    </motion.article>
+  );
+}
+
+function CertificateColumn({
+  certificates: columnCertificates,
+  direction,
+  duration,
+  isPaused,
+  reduceMotion,
+  onPauseChange,
+}: {
+  certificates: Certificate[];
+  direction: "up" | "down";
+  duration: number;
+  isPaused: boolean;
+  reduceMotion: boolean;
+  onPauseChange: (paused: boolean) => void;
+}) {
+  const duplicatedCertificates = useMemo(
+    () => [...columnCertificates, ...columnCertificates],
+    [columnCertificates],
+  );
 
   return (
-    <section id="certifications" className="py-24 bg-card/30">
-      <div className="section-container" ref={ref}>
+    <div
+      className="relative h-[420px] overflow-hidden rounded-[26px] border border-border/60 bg-background/30 p-2 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.2)] md:h-[500px]"
+      onMouseEnter={() => onPauseChange(true)}
+      onMouseLeave={() => onPauseChange(false)}
+      onFocus={() => onPauseChange(true)}
+      onBlur={() => onPauseChange(false)}
+      tabIndex={0}
+      aria-label="Scrolling certificate gallery"
+    >
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-16 bg-gradient-to-b from-background via-background/80 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-16 bg-gradient-to-t from-background via-background/80 to-transparent" />
+
+      <motion.div
+        className="flex flex-col gap-4"
+        animate={
+          reduceMotion || isPaused
+            ? { y: 0 }
+            : { y: direction === "up" ? ["0%", "-50%"] : ["-50%", "0%"] }
+        }
+        transition={
+          reduceMotion || isPaused
+            ? { duration: 0.2 }
+            : { duration, ease: "linear", repeat: Infinity }
+        }
+        style={{ willChange: "transform" }}
+      >
+        {duplicatedCertificates.map((certificate, index) => (
+          <CertificateCard key={`${certificate.id}-${index}`} certificate={certificate} isPaused={isPaused} />
+        ))}
+      </motion.div>
+    </div>
+  );
+}
+
+export function CertificationsSection() {
+  const ref = useRef<HTMLElement | null>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const prefersReducedMotion = useReducedMotion();
+  const [pausedColumns, setPausedColumns] = useState<Record<string, boolean>>({});
+
+  const columns = useMemo(
+    () => [
+      { id: "column-1", direction: "up" as const, duration: 26, items: certificates.filter((_, index) => index % 3 === 0) },
+      { id: "column-2", direction: "down" as const, duration: 30, items: certificates.filter((_, index) => index % 3 === 1) },
+      { id: "column-3", direction: "up" as const, duration: 22, items: certificates.filter((_, index) => index % 3 === 2) },
+    ],
+    [],
+  );
+
+  return (
+    <section id="certifications" className="relative overflow-hidden py-24" ref={ref}>
+      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-background to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" />
+
+      <div className="section-container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="mb-12 text-center"
         >
-          <span className="text-primary text-sm font-medium tracking-wider uppercase">Certifications</span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-2 mb-4">
-            Professional{" "}
-            <span className="text-gradient-accent">Credentials</span>
+          <span className="text-sm font-medium uppercase tracking-[0.2em] text-primary">Certifications</span>
+          <h2 className="mt-2 text-4xl font-bold md:text-5xl">
+            Professional <span className="text-gradient-primary">Credentials</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Validated skills and continuous learning achievements
+          <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground md:text-base">
+            Selected certifications and professional learning achievements supporting my work across Python, data science, and professional development.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {certifications.map((cert, index) => (
-            <motion.div
-              key={cert.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -8 }}
-              className="group h-full"
-            >
-              <div className="glass-card p-6 h-full min-h-[320px] flex flex-col hover:border-primary/30 transition-all duration-300 relative overflow-hidden">
-                {/* Glow effect on hover */}
-                <div className={`absolute -top-20 -right-20 w-40 h-40 rounded-full blur-[80px] opacity-0 group-hover:opacity-30 transition-opacity duration-500 ${
-                  cert.color === "primary" ? "bg-primary" : "bg-accent"
-                }`} />
-
-                <div className="relative z-10 flex flex-col h-full">
-                  <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 ${
-                    cert.color === "primary" ? "bg-primary/10" : "bg-accent/10"
-                  }`}>
-                    <Award className={`w-7 h-7 ${
-                      cert.color === "primary" ? "text-primary" : "text-accent"
-                    }`} />
-                  </div>
-
-                  <span className={`text-xs font-medium ${
-                    cert.color === "primary" ? "text-primary" : "text-accent"
-                  }`}>
-                    {cert.issuer}
-                  </span>
-                  
-                  <h3 className="text-lg font-semibold text-foreground mt-1 mb-3">
-                    {cert.title}
-                  </h3>
-                  
-                  <p className="text-sm text-muted-foreground flex-grow mb-4">
-                    {cert.description}
-                  </p>
-
-                  <Button variant="glass" size="sm" asChild className="w-full mt-auto">
-                    <a href={cert.link} target="_blank" rel="noopener noreferrer">
-                      View Certificate
-                      <ExternalLink size={14} className="ml-2" />
-                    </a>
-                  </Button>
-                </div>
-              </div>
-            </motion.div>
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3 xl:gap-5">
+          {columns.map((column) => (
+            <CertificateColumn
+              key={column.id}
+              certificates={column.items.length ? column.items : certificates}
+              direction={column.direction}
+              duration={column.duration}
+              isPaused={Boolean(pausedColumns[column.id])}
+              reduceMotion={Boolean(prefersReducedMotion)}
+              onPauseChange={(paused) =>
+                setPausedColumns((current) => ({
+                  ...current,
+                  [column.id]: paused,
+                }))
+              }
+            />
           ))}
         </div>
       </div>

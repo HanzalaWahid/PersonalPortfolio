@@ -1,73 +1,81 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Building2, Users, Bug, GraduationCap, Code } from "lucide-react";
+import { Building2, Users, ShieldCheck, Code, SearchCheck, Bot } from "lucide-react";
 
 const experiences = [
   {
     icon: Building2,
-    title: "Project Manager ",
-    company: "Rasinnovatech",
-    period: "Present",
+    title: "Junior AI Developer",
+    company: "Technaptix",
+    period: "April 2026 – Present",
     color: "primary",
     highlights: [
-      "Leading cross-functional teams and sprint planning",
-      "Client coordination and requirement gathering",
-      "Managing product development end-to-end",
-      "Ensuring timely delivery of quality products"
-    ]
-  },
-  {
-    icon: Bug,
-    title: "QA Analyst",
-    company: "TechForge",
-    period: "Oct 2025 - Dec 2025",
-    color: "accent",
-    highlights: [
-      "Validate software releases for production",
-      "Perform detailed bug reporting, tracking, and resolution follow-up",
-      "Conduct comprehensive product quality checks",
-      "Collaborate with developers and PM on system architecture and web-flow improvements"
+      "Working on AI-powered products, Python systems, automation workflows, APIs, and business-focused software solutions.",
+      "Develop and integrate AI-powered features and workflows using Python and modern AI/LLM technologies.",
+      "Build and maintain Python-based backend services and APIs.",
+      "Work on AI automation workflows for real-world business and content use cases.",
+      "Develop and integrate APIs and third-party services into application workflows.",
+      "Contribute to product architecture, system-flow discussions, debugging, and feature development.",
+      "Work with data processing, AI pipelines, and application logic.",
+      "Participate in testing and validation to improve product reliability."
     ]
   },
   {
     icon: Users,
-    title: "QA Automation Engineering Intern",
-    company: "Coventech",
-    period: "Completed",
-    color: "primary",
+    title: "AI & Technology / Project Management",
+    company: "RasInnovatech",
+    period: "September 2025 – Present",
+    color: "accent",
     highlights: [
-      "Contributed to the DeftGPT product under team lead supervision",
-      "Participated in weekly standups with PM, CTO, and developers",
-      "Built the blog automation framework from scratch and maintained previous scripts",
-      "Performed API testing using API Fox",
-      "Participated in UI/UX review meetings, providing detailed feedback and validations"
+      "Coordinate software and AI-focused product development.",
+      "Work with teams on requirements, planning, development workflows, and delivery.",
+      "Contribute to AI-powered applications and automation systems.",
+      "Participate in technical discussions, product planning, and system-flow design.",
+      "Help translate business requirements into technical tasks and deliverables."
     ]
   },
   {
-    icon: GraduationCap,
-    title: "Instructor",
-    company: "Private",
-    period: "Oct 2022 - Nov 2025",
+    icon: SearchCheck,
+    title: "QA Automation Engineer Intern",
+    company: "Coventech",
+    period: "July 2025 – September 2025",
     color: "accent",
     highlights: [
-      "Teaching Python programming fundamentals",
-      "Mathematics instruction (Primary to O Levels)",
-      "Computer Science curriculum delivery",
-      "Mentoring students for academic excellence"
+      "Gained professional exposure to software quality engineering and automation.",
+      "Worked on automation workflows and maintained existing automation scripts.",
+      "Built automation for product-related workflows.",
+      "Performed API testing and validation.",
+      "Participated in UI/UX and product-flow discussions.",
+      "Collaborated with developers, PMs, and technical team members."
+    ]
+  },
+  {
+    icon: ShieldCheck,
+    title: "Information Security Intern",
+    company: "Virtual Security",
+    period: "February 2025 – May 2025",
+    color: "primary",
+    highlights: [
+      "Gained practical exposure to application and information security workflows.",
+      "Worked with security testing and monitoring tools.",
+      "Performed web and application security testing activities.",
+      "Prepared technical findings and security reports.",
+      "Worked with Wireshark, Nmap/Zenmap, Kali Linux, and security monitoring platforms."
     ]
   },
   {
     icon: Code,
     title: "Python Developer",
-    company: "Freelance",
+    company: "Freelance / Independent Projects",
     period: "Ongoing",
     color: "primary",
     highlights: [
-      "Build AI-powered tools and applications",
-      "Backend development using Django & FastAPI",
-      "API development and integrations",
-      "Understanding full-stack flow and modern backend systems"
+      "Build Python applications, APIs, automation workflows, and AI-powered tools.",
+      "Develop backend systems using Django and FastAPI.",
+      "Integrate AI/LLM capabilities into applications.",
+      "Work with databases, APIs, data processing, and automation.",
+      "Develop practical projects focused on solving real-world problems."
     ]
   }
 ];
@@ -95,39 +103,32 @@ export function ExperienceSection() {
               <span className="text-gradient-accent">Journey</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              A track record of delivering excellence across diverse roles
+              AI engineering, Python development, automation, backend systems, and real-world product delivery.
             </p>
           </motion.div>
         </Reveal>
 
         <div className="relative max-w-5xl mx-auto">
-          {/* Timeline center line */}
           <div className="absolute left-[2.25rem] md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-accent to-primary/20 -translate-x-1/2 hidden md:block" />
 
           <div className="space-y-8">
             {experiences.map((exp, index) => (
               <Reveal key={exp.title + exp.company} delay={index * 0.1} width="100%">
-                <div className={`relative flex flex-col md:flex-row items-center gap-8 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                  }`}>
-                  {/* Timeline dot */}
+                <div className={`relative flex flex-col md:flex-row items-center gap-8 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
                   <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-background border-2 border-primary z-10 hidden md:block" />
 
-                  {/* Content Card container */}
                   <div className="w-full md:w-[calc(50%-2rem)]">
                     <TiltCard>
                       <div className="glass-card p-6 min-h-[240px] flex flex-col hover:border-primary/30 transition-all duration-300 interactive group">
                         <div className="flex items-start gap-4 flex-1">
-                          <div className={`w-12 h-12 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110 ${exp.color === "primary" ? "bg-primary/10" : "bg-accent/10"
-                            }`}>
-                            <exp.icon className={`w-6 h-6 ${exp.color === "primary" ? "text-primary" : "text-accent"
-                              }`} />
+                          <div className={`w-12 h-12 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110 ${exp.color === "primary" ? "bg-primary/10" : "bg-accent/10"}`}>
+                            <exp.icon className={`w-6 h-6 ${exp.color === "primary" ? "text-primary" : "text-accent"}`} />
                           </div>
                           <div className="flex-1">
                             <div className="flex items-center justify-between flex-wrap gap-2 mb-2">
                               <div>
                                 <h3 className="text-xl font-bold text-foreground leading-tight">{exp.title}</h3>
-                                <p className={`text-sm font-semibold ${exp.color === "primary" ? "text-primary" : "text-accent"
-                                  }`}>
+                                <p className={`text-sm font-semibold ${exp.color === "primary" ? "text-primary" : "text-accent"}`}>
                                   {exp.company}
                                 </p>
                               </div>
@@ -139,8 +140,7 @@ export function ExperienceSection() {
                             <ul className="space-y-3 mt-4">
                               {exp.highlights.map((highlight, i) => (
                                 <li key={i} className="text-sm text-muted-foreground flex items-start gap-3 leading-relaxed">
-                                  <span className={`w-1 h-4 rounded-full mt-0.5 shrink-0 ${exp.color === "primary" ? "bg-primary/50" : "bg-accent/50"
-                                    }`} />
+                                  <span className={`w-1 h-4 rounded-full mt-0.5 shrink-0 ${exp.color === "primary" ? "bg-primary/50" : "bg-accent/50"}`} />
                                   <span>{highlight}</span>
                                 </li>
                               ))}
@@ -151,7 +151,6 @@ export function ExperienceSection() {
                     </TiltCard>
                   </div>
 
-                  {/* Spacer for alternating layout */}
                   <div className="hidden md:block w-full md:w-[calc(50%-2rem)]" />
                 </div>
               </Reveal>

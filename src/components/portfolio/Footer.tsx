@@ -10,17 +10,15 @@ export function Footer() {
     <footer className="py-12 border-t border-border/50 bg-card/30">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Logo & Copyright */}
           <div className="text-center md:text-left">
             <a href="#" className="text-2xl font-bold text-gradient-primary">
               HW
             </a>
             <p className="text-sm text-muted-foreground mt-2">
-              © {new Date().getFullYear()} Muhammad Hanzala Wahid. All rights reserved.
+              © 2026 Muhammad Hanzala Wahid. All rights reserved.
             </p>
           </div>
 
-          {/* Social Links */}
           <div className="flex items-center gap-4">
             <a
               href="https://github.com/HanzalaWahid"
@@ -46,7 +44,6 @@ export function Footer() {
             </a>
           </div>
 
-          {/* Back to Top */}
           <motion.button
             onClick={scrollToTop}
             whileHover={{ y: -2 }}

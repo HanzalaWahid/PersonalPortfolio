@@ -7,22 +7,22 @@ const highlights = [
   {
     icon: GraduationCap,
     title: "Education",
-    description: "8th Semester AI Student at Dawood University of Engineering & Technology"
+    description: "Bachelor of Science in Artificial Intelligence | Dawood University of Engineering & Technology"
   },
   {
     icon: Code,
     title: "Development",
-    description: "Python, Django, Flask, AI/ML tools including LLaMA, Groq & LangChain"
+    description: "Python · Django · FastAPI · AI/ML · APIs · Automation"
   },
   {
     icon: Briefcase,
     title: "Professional",
-    description: "AI Engineer | Python & Automation "
+    description: "AI Engineer · Python Developer · AI Automation"
   },
   {
     icon: Users,
     title: "Teaching",
-    description: "Instructor for Mathematics, Computer Science & Python Programming"
+    description: "Mathematics · Computer Science · Python Programming"
   }
 ];
 
@@ -46,10 +46,10 @@ export function AboutSection() {
             <span className="text-primary text-sm font-medium tracking-wider uppercase">About Me</span>
             <h2 className="text-4xl md:text-5xl font-bold mt-2 mb-4">
               Turning Ideas Into{" "}
-              <span className="text-gradient-accent">Reality</span>
+              <span className="text-gradient-accent">Production-Ready Systems</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              A blend of technical expertise and creative problem-solving
+              AI engineering, Python development, automation, and practical software systems.
             </p>
           </motion.div>
         </Reveal>
@@ -61,13 +61,16 @@ export function AboutSection() {
                 <h3 className="text-2xl font-semibold mb-4 text-foreground">Who I Am</h3>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    I am a 8th-semester Artificial Intelligence student at <span className="text-primary font-medium interactive">DUET</span>, passionate about building intelligent systems, automation workflows, and high-quality digital products.
+                    I&apos;m <span className="text-primary font-medium interactive">Muhammad Hanzala Wahid</span>, an AI Engineer and Python Developer with a Bachelor&apos;s degree in Artificial Intelligence and 1+ year of hands-on professional experience across AI/ML applications, Python development, backend systems, automation, API development, and software engineering.
                   </p>
                   <p>
-                    My experience spans Python development, AI engineering, and QA automation, allowing me to work across backend systems, machine learning pipelines, and software quality assurance with strong technical depth.
+                    My work focuses on building practical AI-powered products and business systems. I work across the product lifecycle — from understanding requirements and designing system flows to development, API integration, automation, testing, debugging, and deployment.
                   </p>
                   <p>
-                    Alongside development, I collaborate with PMs and engineering teams, contribute to system flow discussions, and help deliver scalable, reliable technology solutions.
+                    I currently work on AI-powered systems, automation workflows, backend applications, and business-focused software products. My interests include LLM applications, RAG systems, AI agents, computer vision, Python backend development, API integrations, and intelligent automation.
+                  </p>
+                  <p>
+                    I also have professional exposure to QA automation, API testing, information security, and software validation, which helps me build more reliable and production-oriented systems.
                   </p>
                 </div>
               </div>
