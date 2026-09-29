@@ -53,7 +53,7 @@ const Index = () => {
       <CustomCursor />
       <AnimatedBackground />
       <Navbar />
-      <main className="relative z-10">
+      <main className="relative z-10 pt-20 md:pt-24">
         <HeroSection />
         <motion.div style={{ y: y2 }}>
           <AboutSection />
